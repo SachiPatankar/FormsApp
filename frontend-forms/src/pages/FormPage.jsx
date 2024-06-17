@@ -130,6 +130,8 @@ const FormPage = () => {
     });
 
     const [errors, setErrors] = useState({});
+    const[success, setSuccess] = useState(false)
+    const[updated, setUpdated] = useState(false)
 
     const validationSchema = Yup.object({
         name: Yup.string().required("Name is Required"),
@@ -145,6 +147,7 @@ const FormPage = () => {
             console.log(formData);
             await axios.post('/info/post', formData);
             console.log("Form Submitted")
+            setSuccess(true)
         } catch (error) {
             console.log(error.message)
             const newErrors = {};
@@ -158,6 +161,15 @@ const FormPage = () => {
 
     const handleRefresh = async (e) => {
         e.preventDefault();
+        try {
+            await axios.post('/sheet/post');
+            console.log("Sheet updated")
+            setUpdated(true)
+        } catch (error) {
+            console.log(error.message)
+        }
+
+
     };
 
     const handleChange = (e) => {
@@ -220,7 +232,10 @@ const FormPage = () => {
                     <button type="submit" className={`w-full p-2 text-white rounded-md ${buttonColor}`}>
                         Submit
                     </button>
+                    
                 </form>
+                {success && <div className="text-sm text-green-600">Form submitted successfully</div>}
+                {updated && <div className="text-sm text-green-600">Sheet updated successfully</div>}
             </div>
         </div>
     );

@@ -3,13 +3,15 @@ import { Info } from "../models/InfoModel.js";
 
 export async function handlePostInfo(req, res) {
 
-    const { name, code, number } = req.body;
+    const { name, code, number, type } = req.body;
+    console.log(req.body);
     
     try {
         const newInfo =  await Info.create({
             name,
             code,
-            number
+            number,
+            type,
           });
           res.json(newInfo);
     } catch (e) {

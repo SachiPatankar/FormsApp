@@ -14,7 +14,11 @@ const infoSchema = new mongoose.Schema({
     number: {
         type: Number,
         required: true,   
-    } 
+    } ,
+    type:{
+        type: String,
+        required: true, 
+    }
 });
 
 const Info = mongoose.model("infos", infoSchema);

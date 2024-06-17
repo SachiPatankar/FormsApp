@@ -7,11 +7,6 @@ import {google} from "googleapis"
               
 const app = express();
 
-const auth = await google.auth.getClient({scopes:['https://www.googleapis.com/auth/spreadsheets.readonly']});
-const sheets = google.sheets({version: "v4", auth});
-
-const {id} = query
-const range = 
 
 app.use(cors({
     credentials: true,
@@ -27,8 +22,8 @@ connectDB();
 import infoRouter from "./routers/formRouter.js";
 app.use("/info" , infoRouter);
 
-
-
+import sheetRouter from "./routers/sheetRouter.js";
+app.use("/sheet" , sheetRouter);
 
 
 app.listen(process.env.APP_PORT,()=>{
