@@ -4,7 +4,6 @@ import { Info } from "../models/InfoModel.js";
 export async function handlePostInfo(req, res) {
 
     const { name, code, number, type } = req.body;
-    console.log(req.body);
     
     try {
         const newInfo =  await Info.create({
