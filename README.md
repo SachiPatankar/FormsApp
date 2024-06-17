@@ -33,3 +33,7 @@ Backend:
 - Axios for HTTP requests handling
 - CORS for enabling cross-origin requests
 - Dotenv for managing environment variables
+
+  ![Alt text](screenshots/Forms.png)
+  ![Alt text](screenshots/Forms2.png)
+
